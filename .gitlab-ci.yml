@@ -1,5 +1,5 @@
 before_script:
- - bundle install
+ - echo "ジョブを実行する前の準備コマンド"
 
 test:
   script: "自動単体テスト実施"
