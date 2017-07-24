@@ -3,25 +3,25 @@ before_script:
 
 test:
   script: "自動単体テスト実施"
-  - echo "テスト実施コマンド"
+   - echo "テスト実施コマンド"
 
 staging:
-  type : deploy
+  type: deploy
   script: "masterにpushする際にステージング環境に自動デプロイ"
-  - echo "ステージング環境にデプロイするコマンド"
+   - echo "ステージング環境にデプロイするコマンド"
   only:
-  - master
+   - master
 
 pre-production:
-  type : deploy
+  type: deploy
   script: "pre-productionにpushする際にpre-production環境に自動デプロイ"
-  - echo "pre-production環境にデプロイするコマンド"
+   - echo "pre-production環境にデプロイするコマンド"
   only:
-  - pre-production
+   - pre-production
 
 production:
-  type : deploy
+  type: deploy
   script: "タグを付ける際に本番環境に自動デプロイ"
-  - echo "本番環境にデプロイするコマンド"
+   - echo "本番環境にデプロイするコマンド"
   only:
-  - tags
+   - tags
