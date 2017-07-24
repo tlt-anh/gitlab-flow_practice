@@ -1,0 +1,27 @@
+before_script:
+ - echo "ジョブを実行する前の準備コマンド"
+
+test:
+ script:
+  - echo "テスト実施コマンド"
+
+staging:
+ type: deploy
+ script:
+  - echo "ステージング環境にデプロイするコマンド"
+ only:
+  - master
+
+pre-production:
+ type: deploy
+ script:
+  - echo "pre-production環境にデプロイするコマンド"
+ only:
+  - pre-production
+
+production:
+ type: deploy
+ script:
+  - echo "本番環境にデプロイするコマンド"
+ only:
+  - tags
