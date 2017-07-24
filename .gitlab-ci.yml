@@ -1,4 +1,5 @@
 before_script: "ジョブを実施する前の準備コマンド"
+ - bundle install
 test:
   script: "自動単体テスト実施"
     # - python manage.py test
