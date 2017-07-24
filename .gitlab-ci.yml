@@ -1,5 +1,6 @@
-before_script: "ジョブを実施する前の準備コマンド"
+before_script:
  - bundle install
+
 test:
   script: "自動単体テスト実施"
     # - python manage.py test
@@ -19,6 +20,7 @@ pre-production:
     # - dpl --provider=heroku --app=gitlab-ci-python-test-preprod --api-key=$HEROKU_PREPROD_API_KEY
   only:
   - pre-production
+
 production:
   type : deploy
   script: "タグを付ける際に本番環境に自動デプロイ"
