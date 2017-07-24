@@ -1,5 +1,4 @@
-before_script:
-  script : "ジョブを実施する前の準備コマンド"
+before_script: "ジョブを実施する前の準備コマンド"
 test:
   script: "自動単体テスト実施"
     # - python manage.py test
