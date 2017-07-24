@@ -1,14 +1,28 @@
 before_script:
-  - apt-get update -qq && apt-get install -y -qq sqlite3 libsqlite3-dev nodejs
-  - ruby -v
-  - which ruby
-  - gem install bundler --no-ri --no-rdoc
-  - bundle install --jobs $(nproc)  "${FLAGS[@]}"
+  script : "ジョブを実施する前の準備コマンド"
+test:
+  script: "自動単体テスト実施"
+    # - python manage.py test
 
-rspec:
-  script:
-    - bundle exec rspec
+staging:
+  type : deploy
+  script: "masterにpushする際にステージング環境に自動デプロイ"
+    # - gem install dpl
+    # - dpl --provider=heroku --app=gitlab-ci-python-test-staging --api-key=$HEROKU_STAGING_API_KEY
+  only:
+  - master
 
-rubocop:
-  script:
-    - bundle exec rubocop
+pre-production:
+  type : deploy
+  script: "pre-productionにpushする際にpre-production環境に自動デプロイ"
+    # - gem install dpl
+    # - dpl --provider=heroku --app=gitlab-ci-python-test-preprod --api-key=$HEROKU_PREPROD_API_KEY
+  only:
+  - pre-production
+production:
+  type : deploy
+  script: "タグを付ける際に本番環境に自動デプロイ"
+    # - gem install dpl
+    # - dpl --provider=heroku --app=gitlab-ci-python-test-prod --api-key=$HEROKU_PROD_API_KEY
+  only:
+  - tags
